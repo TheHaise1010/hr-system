@@ -17,9 +17,11 @@ public class Empleado {
     }
 
     public void setIdEmpleado(int idEmpleado) {
+        if (idEmpleado <= 0) {
+            throw new IllegalArgumentException("ID debe ser positivo");
+        }
         this.idEmpleado = idEmpleado;
     }
-
     public String getNumeroDui() {
         return numeroDui;
     }
