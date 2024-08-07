@@ -19,4 +19,17 @@ public class DatabaseConnection {
         // Establece la conexión a la base de datos
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
+
+    public static void main(String[] args) {
+        try {
+            Connection connection = DatabaseConnection.getConnection();
+            if (connection != null) {
+                System.out.println("Conexión exitosa a la base de datos");
+                connection.close();
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al conectar a la base de datos");
+            e.printStackTrace();
+        }
+    }
 }
