@@ -10,6 +10,9 @@ public class Departamento {
     }
 
     public void setIdDepartamento(int idDepartamento) {
+        if (idDepartamento <= 0) {
+            throw new IllegalArgumentException("ID debe ser positivo");
+        }
         this.idDepartamento = idDepartamento;
     }
 
