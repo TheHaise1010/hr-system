@@ -17,6 +17,9 @@ public class Contratacion {
     }
 
     public void setIdContratacion(int idContratacion) {
+        if (idContratacion <= 0) {
+            throw new IllegalArgumentException("ID debe ser positivo");
+        }
         this.idContratacion = idContratacion;
     }
 
