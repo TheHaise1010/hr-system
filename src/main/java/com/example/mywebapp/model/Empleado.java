@@ -25,9 +25,11 @@ public class Empleado {
     }
 
     public void setNumeroDui(String numeroDui) {
+        if (!numeroDui.matches("^[0-9]{8}-[0-9]$")) {
+            throw new IllegalArgumentException("Numero DUI debe tener 8 digitos, un guion y otro digito");
+        }
         this.numeroDui = numeroDui;
     }
-
     public String getNombrePersona() {
         return nombrePersona;
     }
@@ -49,9 +51,11 @@ public class Empleado {
     }
 
     public void setNumeroTelefono(String numeroTelefono) {
+        if (!numeroTelefono.matches("^[0-9]{8}$")) {
+            throw new IllegalArgumentException("Numero de telefono debe tener 8 digitos");
+        }
         this.numeroTelefono = numeroTelefono;
     }
-
     public String getCorreoInstitucional() {
         return correoInstitucional;
     }
