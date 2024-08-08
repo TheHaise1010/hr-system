@@ -53,7 +53,7 @@ public class EmpleadoController extends HttpServlet {
     private void listEmpleados(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         List<Empleado> empleados = empleadoDao.getAllEmpleados();
         request.setAttribute("empleados", empleados);
-        request.getRequestDispatcher("/views/empleados.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/empleado/list-empleados.jsp").forward(request, response);
     }
 
     private void createEmpleado(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
