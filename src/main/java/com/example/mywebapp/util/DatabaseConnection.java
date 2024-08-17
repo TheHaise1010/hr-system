@@ -5,18 +5,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String URL = "jdbc:mysql://localhost:3306/mydatabase";
-    private static final String USER = "root"; // Cambia esto a tu usuario de MySQL
-    private static final String PASSWORD = "1234"; // Cambia esto a tu contraseña de MySQL
+    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/mydatabase?enabledTLSProtocols=TLSv1.2";
+    private static final String DATABASE_USER = "root";
+    private static final String DATABASE_PASSWORD = "1234";
 
     public static Connection getConnection() throws SQLException {
         try {
-            // Carga el controlador JDBC de MySQL
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            throw new SQLException("No se pudo cargar el controlador JDBC de MySQL", e);
+            e.printStackTrace();
+            throw new SQLException(e);
         }
-        // Establece la conexión a la base de datos
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+        return DriverManager.getConnection(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD);
     }
 }

@@ -53,7 +53,7 @@ public class EmpleadoController extends HttpServlet {
     private void listEmpleados(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         List<Empleado> empleados = empleadoDao.getAllEmpleados();
         request.setAttribute("empleados", empleados);
-        request.getRequestDispatcher("/views/empleado/list-empleados.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/empleados.jsp").forward(request, response);
     }
 
     private void createEmpleado(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
@@ -62,7 +62,7 @@ public class EmpleadoController extends HttpServlet {
         String usuario = request.getParameter("usuario");
         String numeroTelefono = request.getParameter("numeroTelefono");
         String correoInstitucional = request.getParameter("correoInstitucional");
-        Date fechaNacimiento = Date.valueOf(request.getParameter("fechaNacimiento"));
+        Date fechaNacimiento = Date.valueOf(request.getParameter("fechaNacimiento")); // assuming the date is in the format "yyyy-[m]m-[d]d"
 
         Empleado empleado = new Empleado();
         empleado.setNumeroDui(numeroDui);
@@ -79,9 +79,10 @@ public class EmpleadoController extends HttpServlet {
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         Empleado existingEmpleado = empleadoDao.getEmpleadoById(id);
-        request.setAttribute("empleado", existingEmpleado);
-        request.getRequestDispatcher("/views/edit-empleado.jsp").forward(request, response);
+        request.setAttribute("Empleado", existingEmpleado);
+        request.getRequestDispatcher("/views/edit-Empleado.jsp").forward(request, response);
     }
+
 
     private void updateEmpleado(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
@@ -90,7 +91,7 @@ public class EmpleadoController extends HttpServlet {
         String usuario = request.getParameter("usuario");
         String numeroTelefono = request.getParameter("numeroTelefono");
         String correoInstitucional = request.getParameter("correoInstitucional");
-        Date fechaNacimiento = Date.valueOf(request.getParameter("fechaNacimiento"));
+        Date fechaNacimiento = Date.valueOf(request.getParameter("fechaNacimiento")); // assuming the date is in the format "yyyy-[m]m-[d]d"
 
         Empleado empleado = new Empleado();
         empleado.setIdEmpleado(id);
@@ -104,11 +105,10 @@ public class EmpleadoController extends HttpServlet {
         empleadoDao.updateEmpleado(empleado);
         response.sendRedirect("empleados?action=list");
     }
-
     private void deleteEmpleado(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         empleadoDao.deleteEmpleado(id);
-        response.sendRedirect("empleados?action=list");
+        response.sendRedirect("Empleados?action=list");
     }
 
     @Override
