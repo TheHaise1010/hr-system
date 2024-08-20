@@ -52,7 +52,7 @@ public class DepartamentoServlet extends HttpServlet {
     private void listDepartamentos(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         List<Departamento> departamentos = departamentoDao.getAllDepartamentos();
         request.setAttribute("departamentos", departamentos);
-        request.getRequestDispatcher("/views/Departamento/departamentos.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/Departamento/list-departamentos.jsp").forward(request, response);
     }
 
     private void createDepartamento(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
