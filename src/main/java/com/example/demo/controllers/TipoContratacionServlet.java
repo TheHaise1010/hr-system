@@ -52,7 +52,7 @@ public class TipoContratacionServlet extends HttpServlet {
         List<TipoContratacion> tiposContratacion = tipoContratacionDao.getAllTiposContratacion();
         request.setAttribute("tiposContratacion", tiposContratacion);
         try {
-            request.getRequestDispatcher("/views/tiposcontratacion.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/TipoContratacion/list-tipo-contrataciones.jsp").forward(request, response);
         } catch (Exception e) {
             throw new IOException(e);
         }
