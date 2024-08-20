@@ -7,9 +7,9 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/views/empleado/list-empleados.jsp">Empleados</a>
+                <a class="nav-link" href="empleado?action=list">Empleados</a>
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/views/departamento/list-departamentos.jsp">Departamentos</a>
+                <a class="nav-link" href="departamento?action=list">Departamentos</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/views/contratacion/list-contrataciones.jsp">Contrataciones</a>
