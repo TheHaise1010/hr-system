@@ -12,7 +12,7 @@
                 <a class="nav-link" href="departamento?action=list">Departamentos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/views/contratacion/list-contrataciones.jsp">Contrataciones</a>
+                <a class="nav-link" href="contrataciones?action=list">Contrataciones</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="cargos?action=list">Cargos</a>
