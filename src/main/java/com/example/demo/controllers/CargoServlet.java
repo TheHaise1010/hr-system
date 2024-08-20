@@ -52,7 +52,7 @@ public class CargoServlet extends HttpServlet {
         List<Cargo> cargos = cargoDao.getAllCargos();
         request.setAttribute("cargos", cargos);
         try {
-            request.getRequestDispatcher("/views/cargos.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/Cargo/list-cargos.jsp").forward(request, response);
         } catch (Exception e) {
             throw new IOException(e);
         }

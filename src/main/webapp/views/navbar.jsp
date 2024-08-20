@@ -15,7 +15,7 @@
                 <a class="nav-link" href="${pageContext.request.contextPath}/views/contratacion/list-contrataciones.jsp">Contrataciones</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="${pageContext.request.contextPath}/views/cargo/list-cargos.jsp">Cargos</a>
+                <a class="nav-link" href="cargos?action=list">Cargos</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/views/tipoContratacion/list-tipoContrataciones.jsp">Tipos de Contratacion</a>
