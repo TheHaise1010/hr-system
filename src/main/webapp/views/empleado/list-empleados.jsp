@@ -17,7 +17,7 @@
     <h2 class="mb-4">Lista de Empleados</h2>
     <c:choose>
         <c:when test="${not empty empleados}">
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover text-center">
                 <thead class="thead-dark">
                 <tr>
                     <th>DUI</th>
@@ -25,6 +25,7 @@
                     <th>Numero telefono</th>
                     <th>Correo institucional</th>
                     <th>Fecha nacimiento</th>
+                    <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -35,6 +36,10 @@
                         <td><c:out value="${empleado.numeroTelefono}"/></td>
                         <td><c:out value="${empleado.correoInstitucional}"/></td>
                         <td><c:out value="${empleado.fechaNacimiento}"/></td>
+                        <td class="d-flex justify-content-center">
+                            <button class="btn btn-success mr-2">Editar</button>
+                            <button class="btn btn-danger">Borrar</button>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

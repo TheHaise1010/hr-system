@@ -17,13 +17,14 @@
     <h2 class="mb-4">Lista de Cargos</h2>
     <c:choose>
         <c:when test="${not empty cargos}">
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover text-center">
                 <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
                     <th>Jefatura</th>
+                    <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -33,6 +34,10 @@
                         <td><c:out value="${cargo.nombreCargo}"/></td>
                         <td><c:out value="${cargo.descripcionCargo}"/></td>
                         <td><c:out value="${cargo.jefaturaCargo}"/></td>
+                        <td class="d-flex justify-content-center">
+                            <button class="btn btn-success mr-2">Editar</button>
+                            <button class="btn btn-danger">Borrar</button>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

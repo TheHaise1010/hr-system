@@ -12,17 +12,17 @@
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
-
 <div class="container mt-5">
     <h2 class="mb-4">Lista de Contrataciones</h2>
     <c:choose>
         <c:when test="${not empty contrataciones}">
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover text-center">
                 <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
+                    <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -31,6 +31,10 @@
                         <td><c:out value="${contratacion.idContratacion}"/></td>
                         <td><c:out value="${contratacion.nombreContratacion}"/></td>
                         <td><c:out value="${contratacion.descripcionContratacion}"/></td>
+                        <td class="d-flex justify-content-center">
+                            <button class="btn btn-success mr-2">Editar</button>
+                            <button class="btn btn-danger">Borrar</button>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>

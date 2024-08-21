@@ -17,12 +17,13 @@
     <h2 class="mb-4">Lista de Tipos de Contrataciones</h2>
     <c:choose>
         <c:when test="${not empty tiposContratacion}">
-            <table class="table table-bordered table-hover">
+            <table class="table table-bordered table-hover text-center">
                 <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Descripcion</th>
+                    <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -31,6 +32,10 @@
                         <td><c:out value="${tipoContratacion.idTipoContratacion}"/></td>
                         <td><c:out value="${tipoContratacion.nombreTipoContratacion}"/></td>
                         <td><c:out value="${tipoContratacion.descripcionTipoContratacion}"/></td>
+                        <td class="d-flex justify-content-center">
+                            <button class="btn btn-success mr-2">Editar</button>
+                            <button class="btn btn-danger">Borrar</button>
+                        </td>
                     </tr>
                 </c:forEach>
                 </tbody>
