@@ -41,6 +41,9 @@ public class EmpleadoServlet extends HttpServlet {
                 case "delete":
                     deleteEmpleado(request, response);
                     break;
+                case "showCreateForm":
+                    showCreateForm(request, response);
+                    break;
                 default:
                     listEmpleados(request, response);
                     break;
@@ -54,6 +57,14 @@ public class EmpleadoServlet extends HttpServlet {
         List<Empleado> empleados = empleadoDao.getAllEmpleados();
         request.setAttribute("empleados", empleados);
         request.getRequestDispatcher("/views/Empleado/list-empleados.jsp").forward(request, response);
+    }
+
+    private void showCreateForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            request.getRequestDispatcher("/views/Empleado/create-empleado.jsp").forward(request, response);
+        } catch (Exception e) {
+            throw new IOException(e);
+        }
     }
 
     private void createEmpleado(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
