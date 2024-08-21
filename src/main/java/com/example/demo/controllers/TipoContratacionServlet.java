@@ -39,6 +39,9 @@ public class TipoContratacionServlet extends HttpServlet {
                 case "delete":
                     deleteTipoContratacion(request, response);
                     break;
+                case "showCreateForm":
+                    showCreateForm(request, response);
+                    break;
                 default:
                     listTiposContratacion(request, response);
                     break;
@@ -53,6 +56,14 @@ public class TipoContratacionServlet extends HttpServlet {
         request.setAttribute("tiposContratacion", tiposContratacion);
         try {
             request.getRequestDispatcher("/views/TipoContratacion/list-tipo-contrataciones.jsp").forward(request, response);
+        } catch (Exception e) {
+            throw new IOException(e);
+        }
+    }
+
+    private void showCreateForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            request.getRequestDispatcher("/views/TipoContratacion/create-tipo-contratacion.jsp").forward(request, response);
         } catch (Exception e) {
             throw new IOException(e);
         }
