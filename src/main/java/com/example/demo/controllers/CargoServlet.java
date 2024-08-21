@@ -39,6 +39,9 @@ public class CargoServlet extends HttpServlet {
                 case "delete":
                     deleteCargo(request, response);
                     break;
+                case "showCreateForm":
+                    showCreateForm(request, response);
+                    break;
                 default:
                     listCargos(request, response);
                     break;
@@ -58,6 +61,13 @@ public class CargoServlet extends HttpServlet {
         }
     }
 
+    private void showCreateForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            request.getRequestDispatcher("/views/Cargo/create-cargo.jsp").forward(request, response);
+        } catch (Exception e) {
+            throw new IOException(e);
+        }
+    }
     private void createCargo(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         String cargo = request.getParameter("cargo");
         String descripcionCargo = request.getParameter("descripcionCargo");
