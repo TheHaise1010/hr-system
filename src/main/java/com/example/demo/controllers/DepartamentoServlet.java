@@ -40,6 +40,9 @@ public class DepartamentoServlet extends HttpServlet {
                 case "delete":
                     deleteDepartamento(request, response);
                     break;
+                case "showCreateForm":
+                    showCreateForm(request, response);
+                    break;
                 default:
                     listDepartamentos(request, response);
                     break;
@@ -53,6 +56,14 @@ public class DepartamentoServlet extends HttpServlet {
         List<Departamento> departamentos = departamentoDao.getAllDepartamentos();
         request.setAttribute("departamentos", departamentos);
         request.getRequestDispatcher("/views/Departamento/list-departamentos.jsp").forward(request, response);
+    }
+
+    private void showCreateForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            request.getRequestDispatcher("/views/Departamento/create-departamento.jsp").forward(request, response);
+        } catch (Exception e) {
+            throw new IOException(e);
+        }
     }
 
     private void createDepartamento(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
