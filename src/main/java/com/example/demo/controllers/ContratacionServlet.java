@@ -40,6 +40,9 @@ public class ContratacionServlet extends HttpServlet {
                 case "delete":
                     deleteContratacion(request, response);
                     break;
+                case "showCreateForm":
+                    showCreateForm(request, response);
+                    break;
                 default:
                     listContrataciones(request, response);
                     break;
@@ -58,6 +61,15 @@ public class ContratacionServlet extends HttpServlet {
             throw new IOException(e);
         }
     }
+
+    private void showCreateForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            request.getRequestDispatcher("/views/Contratacion/create-contratacion.jsp").forward(request, response);
+        } catch (Exception e) {
+            throw new IOException(e);
+        }
+    }
+
 
     private void createContratacion(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int idDepartamento = Integer.parseInt(request.getParameter("idDepartamento"));
