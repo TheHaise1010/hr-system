@@ -72,7 +72,7 @@ public class EmpleadoServlet extends HttpServlet {
         String nombrePersona = request.getParameter("nombrePersona");
         String usuario = request.getParameter("usuario");
         String numeroTelefono = request.getParameter("numeroTelefono");
-        String correoInstitucional = request.getParameter("correoInstitucional");
+        String correoInstitucional = request.getParameter("usuario") + "@empresa.com";
         Date fechaNacimiento = Date.valueOf(request.getParameter("fechaNacimiento")); // assuming the date is in the format "yyyy-[m]m-[d]d"
 
         Empleado empleado = new Empleado();
@@ -84,7 +84,7 @@ public class EmpleadoServlet extends HttpServlet {
         empleado.setFechaNacimiento(fechaNacimiento);
 
         empleadoDao.addEmpleado(empleado);
-        response.sendRedirect("empleados?action=list");
+        response.sendRedirect("empleado?action=list");
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
