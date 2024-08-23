@@ -69,6 +69,12 @@ public class EmpleadoServlet extends HttpServlet {
 
     private void createEmpleado(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         String numeroDui = request.getParameter("numeroDui");
+        if (empleadoDao.duiExists(numeroDui)) {
+            // Redirige al formulario de creación y muestra un mensaje de error.
+            request.setAttribute("error", "El DUI ingresado ya existe en la base de datos.");
+            showCreateForm(request, response);
+            return;
+        }
         String nombrePersona = request.getParameter("nombrePersona");
         String usuario = request.getParameter("usuario");
         String numeroTelefono = request.getParameter("numeroTelefono");

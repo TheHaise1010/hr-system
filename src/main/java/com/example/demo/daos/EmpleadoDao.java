@@ -44,6 +44,19 @@ public class EmpleadoDao {
         }
     }
 
+    public boolean duiExists(String numeroDui) throws SQLException {
+        String query = "SELECT COUNT(*) FROM Empleados WHERE numeroDui = ?";
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, numeroDui);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt(1) > 0;
+                }
+            }
+        }
+        return false;
+    }
     public Empleado getEmpleadoById(int id) throws SQLException {
         Empleado empleado = null;
         String query = "SELECT * FROM Empleados WHERE idEmpleado = ?";
