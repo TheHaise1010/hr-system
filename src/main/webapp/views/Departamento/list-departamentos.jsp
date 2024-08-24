@@ -29,9 +29,9 @@
                 <tbody>
                 <c:forEach var="departamento" items="${departamentos}">
                     <tr>
-                        <td><c:out value="${departamento.id}"/></td>
-                        <td><c:out value="${departamento.nombre}"/></td>
-                        <td><c:out value="${departamento.descripcion}"/></td>
+                        <td><c:out value="${departamento.idDepartamento}"/></td>
+                        <td><c:out value="${departamento.nombreDepartamento}"/></td>
+                        <td><c:out value="${departamento.descripcionDepartamento}"/></td>
                         <td class="d-flex justify-content-center">
                             <button class="btn btn-success mr-2">Editar</button>
                             <button class="btn btn-danger">Borrar</button>

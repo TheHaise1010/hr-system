@@ -75,7 +75,7 @@ public class DepartamentoServlet extends HttpServlet {
         departamento.setDescripcionDepartamento(descripcionDepartamento);
 
         departamentoDao.addDepartamento(departamento);
-        response.sendRedirect("departamentos?action=list");
+        response.sendRedirect("departamento?action=list");
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
