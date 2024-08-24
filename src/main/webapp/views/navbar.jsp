@@ -37,8 +37,8 @@
                     Cargos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownCargos">
-                    <a class="dropdown-item" href="cargos?action=list">Ver Cargos</a>
-                    <a class="dropdown-item" href="cargos?action=showCreateForm">Crear Cargo</a>
+                    <a class="dropdown-item" href="cargo?action=list">Ver Cargos</a>
+                    <a class="dropdown-item" href="cargo?action=showCreateForm">Crear Cargo</a>
                 </div>
             </li>
             <li class="nav-item dropdown">

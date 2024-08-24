@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/cargos")
+@WebServlet("/cargo")
 public class CargoServlet extends HttpServlet {
     private CargoDao cargoDao;
 
@@ -79,7 +79,7 @@ public class CargoServlet extends HttpServlet {
         cargoObj.setJefatura(jefatura);
 
         cargoDao.addCargo(cargoObj);
-        response.sendRedirect("cargos?action=list");
+        response.sendRedirect("cargo?action=list");
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {

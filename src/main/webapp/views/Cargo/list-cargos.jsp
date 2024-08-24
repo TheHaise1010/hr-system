@@ -31,9 +31,16 @@
                 <c:forEach var="cargo" items="${cargos}">
                     <tr>
                         <td><c:out value="${cargo.idCargo}"/></td>
-                        <td><c:out value="${cargo.nombreCargo}"/></td>
+                        <td><c:out value="${cargo.cargo}"/></td>
                         <td><c:out value="${cargo.descripcionCargo}"/></td>
-                        <td><c:out value="${cargo.jefaturaCargo}"/></td>
+                        <td> <c:choose>
+                            <c:when test="${cargo.jefatura}">
+                                Sí
+                            </c:when>
+                            <c:otherwise>
+                                No
+                            </c:otherwise>
+                        </c:choose></td>
                         <td class="d-flex justify-content-center">
                             <button class="btn btn-success mr-2">Editar</button>
                             <button class="btn btn-danger">Borrar</button>
