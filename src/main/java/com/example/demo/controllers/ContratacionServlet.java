@@ -98,7 +98,7 @@ public class ContratacionServlet extends HttpServlet {
         Contratacion existingContratacion = contratacionDao.getContratacionById(id);
         request.setAttribute("contratacion", existingContratacion);
         try {
-            request.getRequestDispatcher("/views/edit-contratacion.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/Contratacion/create-contratacion.jsp").forward(request, response);
         } catch (Exception e) {
             throw new IOException(e);
         }

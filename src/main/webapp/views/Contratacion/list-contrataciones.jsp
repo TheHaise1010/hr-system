@@ -32,8 +32,8 @@
                         <td><c:out value="${contratacion.nombreContratacion}"/></td>
                         <td><c:out value="${contratacion.descripcionContratacion}"/></td>
                         <td class="d-flex justify-content-center">
-                            <button class="btn btn-success mr-2">Editar</button>
-                            <button class="btn btn-danger">Borrar</button>
+                            <a href="${pageContext.request.contextPath}/contratacion?action=edit&id=${contratacion.idContratacion}" class="btn btn-success mr-2">Editar</a>
+                            <a href="${pageContext.request.contextPath}/contratacion?action=delete&id=${contratacion.idContratacion}" class="btn btn-danger">Borrar</a>
                         </td>
                     </tr>
                 </c:forEach>
