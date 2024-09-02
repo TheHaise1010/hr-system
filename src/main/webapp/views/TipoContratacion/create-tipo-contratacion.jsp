@@ -1,18 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Agregar Tipo de Contratación</title>
+    <title>${tipoContratacion != null ? 'Editar' : 'Agregar'} Tipo de Contratación</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Agregar Tipo de Contratación</h2>
-    <form action="${pageContext.request.contextPath}/tipoContratacion?action=create" method="post">
+    <h2 class="mb-4">${tipoContratacion != null ? 'Editar' : 'Agregar'} Tipo de Contratación</h2>
+    <form action="${pageContext.request.contextPath}/tipoContratacion?action=${tipoContratacion != null ? 'update' : 'create'}" method="post">
+        <c:if test="${tipoContratacion != null}">
+            <input type="hidden" name="id" value="${tipoContratacion.idTipoContratacion}" />
+        </c:if>
         <div class="form-group">
             <label for="tipoContratacion">Nombre del Tipo de Contratación</label>
-            <input type="text" class="form-control" id="tipoContratacion" name="tipoContratacion" required>
+            <input type="text" class="form-control" id="tipoContratacion" name="tipoContratacion" value="${tipoContratacion != null ? tipoContratacion.tipoContratacion : ''}" required>
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>

@@ -31,8 +31,8 @@
                         <td><c:out value="${tipoContratacion.idTipoContratacion}"/></td>
                         <td><c:out value="${tipoContratacion.tipoContratacion}"/></td>
                         <td class="d-flex justify-content-center">
-                            <button class="btn btn-success mr-2">Editar</button>
-                            <button class="btn btn-danger">Borrar</button>
+                            <a href="${pageContext.request.contextPath}/tipoContratacion?action=edit&id=${tipoContratacion.idTipoContratacion}" class="btn btn-success mr-2">Editar</a>
+                            <a href="${pageContext.request.contextPath}/tipoContratacion?action=delete&id=${tipoContratacion.idTipoContratacion}" class="btn btn-danger">Borrar</a>
                         </td>
                     </tr>
                 </c:forEach>
