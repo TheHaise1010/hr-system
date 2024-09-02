@@ -82,7 +82,7 @@ public class DepartamentoServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Departamento existingDepartamento = departamentoDao.getDepartamentoById(id);
         request.setAttribute("departamento", existingDepartamento);
-        request.getRequestDispatcher("/views/edit-departamento.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/Departamento/create-departamento.jsp").forward(request, response);
     }
 
     private void updateDepartamento(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
@@ -96,15 +96,14 @@ public class DepartamentoServlet extends HttpServlet {
         departamento.setDescripcionDepartamento(descripcionDepartamento);
 
         departamentoDao.updateDepartamento(departamento);
-        response.sendRedirect("departamentos?action=list");
+        response.sendRedirect("departamento?action=list");
     }
 
     private void deleteDepartamento(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         departamentoDao.deleteDepartamento(id);
-        response.sendRedirect("departamentos?action=list");
+        response.sendRedirect("departamento?action=list");
     }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         processRequest(request, response);

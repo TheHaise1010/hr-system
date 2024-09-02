@@ -1,23 +1,26 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Agregar Departamento</title>
+    <title>${departamento != null ? 'Editar' : 'Agregar'} Departamento</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Agregar Departamento</h2>
-    <form action="${pageContext.request.contextPath}/departamento?action=create" method="post">
+    <h2 class="mb-4">${departamento != null ? 'Editar' : 'Agregar'} Departamento</h2>
+    <form action="${pageContext.request.contextPath}/departamento?action=${departamento != null ? 'update' : 'create'}" method="post">
+        <c:if test="${departamento != null}">
+            <input type="hidden" name="id" value="${departamento.idDepartamento}" />
+        </c:if>
         <div class="form-group">
             <label for="nombreDepartamento">Nombre del Departamento</label>
-            <input type="text" class="form-control" id="nombreDepartamento" name="nombreDepartamento" required maxlength="25">
+            <input type="text" class="form-control" id="nombreDepartamento" name="nombreDepartamento" value="${departamento != null ? departamento.nombreDepartamento : ''}" required maxlength="25">
             <span id="nombreDepartamentoError" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label for="descripcionDepartamento">Descripción del Departamento</label>
-            <textarea class="form-control" id="descripcionDepartamento" name="descripcionDepartamento" required></textarea>
+            <textarea class="form-control" id="descripcionDepartamento" name="descripcionDepartamento" required>${departamento != null ? departamento.descripcionDepartamento : ''}</textarea>
             <span id="descripcionDepartamentoError" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
@@ -29,10 +32,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     document.querySelector('form').addEventListener('submit', function(event) {
-        // Prevent the form from being submitted if it's not valid.
         event.preventDefault();
 
-        // Validate the nombreDepartamento field.
         var nombreDepartamento = document.getElementById('nombreDepartamento');
         var nombreDepartamentoError = document.getElementById('nombreDepartamentoError');
         if (nombreDepartamento.value.trim() === '') {
@@ -42,7 +43,6 @@
             nombreDepartamentoError.textContent = '';
         }
 
-        // Validate the descripcionDepartamento field.
         var descripcionDepartamento = document.getElementById('descripcionDepartamento');
         var descripcionDepartamentoError = document.getElementById('descripcionDepartamentoError');
         if (descripcionDepartamento.value.trim() === '') {
@@ -52,7 +52,6 @@
             descripcionDepartamentoError.textContent = '';
         }
 
-        // If all fields are valid, submit the form.
         event.target.submit();
     });
 </script>

@@ -33,8 +33,8 @@
                         <td><c:out value="${departamento.nombreDepartamento}"/></td>
                         <td><c:out value="${departamento.descripcionDepartamento}"/></td>
                         <td class="d-flex justify-content-center">
-                            <button class="btn btn-success mr-2">Editar</button>
-                            <button class="btn btn-danger">Borrar</button>
+                            <a href="${pageContext.request.contextPath}/departamento?action=edit&id=${departamento.idDepartamento}" class="btn btn-success mr-2">Editar</a>
+                            <a href="${pageContext.request.contextPath}/departamento?action=delete&id=${departamento.idDepartamento}" class="btn btn-danger">Borrar</a>
                         </td>
                     </tr>
                 </c:forEach>
