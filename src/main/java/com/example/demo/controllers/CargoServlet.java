@@ -112,7 +112,7 @@ public class CargoServlet extends HttpServlet {
     private void deleteCargo(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         cargoDao.deleteCargo(id);
-        response.sendRedirect("cargos?action=list");
+        response.sendRedirect("cargo?action=list");
     }
 
     @Override
