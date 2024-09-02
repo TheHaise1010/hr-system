@@ -1,50 +1,49 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Agregar Empleado</title>
+    <title>${empleado != null ? 'Editar' : 'Agregar'} Empleado</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
 
 <div class="container mt-5">
-    <h2 class="mb-4">Agregar Empleado</h2>
+    <h2 class="mb-4">${empleado != null ? 'Editar' : 'Agregar'} Empleado</h2>
     <% if (request.getAttribute("error") != null) { %>
     <div class="alert alert-danger" role="alert">
         <%= request.getAttribute("error") %>
     </div>
     <% } %>
-    <form action="${pageContext.request.contextPath}/empleado?action=create" method="post">
+    <form action="${pageContext.request.contextPath}/empleado?action=${empleado != null ? 'update' : 'create'}" method="post">
+        <c:if test="${empleado != null}">
+            <input type="hidden" name="id" value="${empleado.idEmpleado}" />
+        </c:if>
+        <c:if test="${empleado != null}">
+            <input type="hidden" name="correoInstitucional" value="${empleado.correoInstitucional}" />
+        </c:if>
         <div class="form-group">
             <label for="numeroDui">Número DUI</label>
-            <input type="text" class="form-control" id="numeroDui" name="numeroDui" required maxlength="10">
+            <input type="text" class="form-control" id="numeroDui" name="numeroDui" value="${empleado != null ? empleado.numeroDui : ''}" required maxlength="10">
             <span id="numeroDuiError" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label for="nombrePersona">Nombre y apellido</label>
-            <input type="text" class="form-control" id="nombrePersona" name="nombrePersona" required maxlength="30">
+            <input type="text" class="form-control" id="nombrePersona" name="nombrePersona" value="${empleado != null ? empleado.nombrePersona : ''}" required maxlength="30">
             <span id="nombrePersonaError" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label for="usuario">Usuario</label>
-            <input type="text" class="form-control" id="usuario" name="usuario" required maxlength="15">
+            <input type="text" class="form-control" id="usuario" name="usuario" value="${empleado != null ? empleado.usuario : ''}" required maxlength="15">
             <span id="usuarioError" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label for="numeroTelefono">Número de Teléfono</label>
-            <input type="text" class="form-control" id="numeroTelefono" name="numeroTelefono" required maxlength="9">
+            <input type="text" class="form-control" id="numeroTelefono" name="numeroTelefono" value="${empleado != null ? empleado.numeroTelefono : ''}" required maxlength="9">
             <span id="numeroTelefonoError" class="text-danger"></span>
         </div>
-        <!--
-        <div class="form-group">
-            <label for="correoInstitucional">Correo Institucional</label>
-            <input type="email" class="form-control" id="correoInstitucional" name="correoInstitucional" required>
-            <span id="correoInstitucionalError" class="text-danger"></span>
-        </div>
-        -->
         <div class="form-group">
             <label for="fechaNacimiento">Fecha de Nacimiento</label>
-            <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" required>
+            <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento" value="${empleado != null ? empleado.fechaNacimiento : ''}" required>
             <span id="fechaNacimientoError" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
@@ -56,10 +55,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     document.querySelector('form').addEventListener('submit', function(event) {
-        // Prevent the form from being submitted if it's not valid.
         event.preventDefault();
 
-        // Validate the numeroDui field.
         var numeroDui = document.getElementById('numeroDui');
         var numeroDuiError = document.getElementById('numeroDuiError');
         if (numeroDui.value.trim() === '') {
@@ -72,7 +69,6 @@
             numeroDuiError.textContent = '';
         }
 
-        // Validate the nombrePersona field.
         var nombrePersona = document.getElementById('nombrePersona');
         var nombrePersonaError = document.getElementById('nombrePersonaError');
         if (nombrePersona.value.trim() === '') {
@@ -82,7 +78,6 @@
             nombrePersonaError.textContent = '';
         }
 
-        // Validate the usuario field.
         var usuario = document.getElementById('usuario');
         var usuarioError = document.getElementById('usuarioError');
         if (usuario.value.trim() === '') {
@@ -92,7 +87,6 @@
             usuarioError.textContent = '';
         }
 
-        // Validate the numeroTelefono field.
         var numeroTelefono = document.getElementById('numeroTelefono');
         var numeroTelefonoError = document.getElementById('numeroTelefonoError');
         if (numeroTelefono.value.trim() === '') {
@@ -104,7 +98,7 @@
         } else {
             numeroTelefonoError.textContent = '';
         }
-        // Validate the fechaNacimiento field.
+
         var fechaNacimiento = document.getElementById('fechaNacimiento');
         var fechaNacimientoError = document.getElementById('fechaNacimientoError');
         if (fechaNacimiento.value.trim() === '') {
@@ -122,7 +116,6 @@
             }
         }
 
-        // If all fields are valid, submit the form.
         event.target.submit();
     });
 </script>
