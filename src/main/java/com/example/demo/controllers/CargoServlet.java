@@ -87,7 +87,7 @@ public class CargoServlet extends HttpServlet {
         Cargo existingCargo = cargoDao.getCargoById(id);
         request.setAttribute("cargo", existingCargo);
         try {
-            request.getRequestDispatcher("/views/edit-cargo.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/Cargo/create-cargo.jsp").forward(request, response);
         } catch (Exception e) {
             throw new IOException(e);
         }
@@ -106,7 +106,7 @@ public class CargoServlet extends HttpServlet {
         cargoObj.setJefatura(jefatura);
 
         cargoDao.updateCargo(cargoObj);
-        response.sendRedirect("cargos?action=list");
+        response.sendRedirect("cargo?action=list");
     }
 
     private void deleteCargo(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
