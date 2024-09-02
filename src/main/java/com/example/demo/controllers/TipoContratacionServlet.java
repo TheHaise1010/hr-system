@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/tiposcontratacion")
+@WebServlet("/tipoContratacion")
 public class TipoContratacionServlet extends HttpServlet {
     private TipoContratacionDao tipoContratacionDao;
 
@@ -76,7 +76,7 @@ public class TipoContratacionServlet extends HttpServlet {
         tipoContratacionObj.setTipoContratacion(tipoContratacion);
 
         tipoContratacionDao.addTipoContratacion(tipoContratacionObj);
-        response.sendRedirect("tiposcontratacion?action=list");
+        response.sendRedirect("tipoContratacion?action=list");
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
@@ -84,7 +84,7 @@ public class TipoContratacionServlet extends HttpServlet {
         TipoContratacion existingTipoContratacion = tipoContratacionDao.getTipoContratacionById(id);
         request.setAttribute("tipoContratacion", existingTipoContratacion);
         try {
-            request.getRequestDispatcher("/views/edit-tipocontratacion.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/TipoContratacion/create-tipo-contratacion.jsp").forward(request, response);
         } catch (Exception e) {
             throw new IOException(e);
         }
@@ -99,13 +99,13 @@ public class TipoContratacionServlet extends HttpServlet {
         tipoContratacionObj.setTipoContratacion(tipoContratacion);
 
         tipoContratacionDao.updateTipoContratacion(tipoContratacionObj);
-        response.sendRedirect("tiposcontratacion?action=list");
+        response.sendRedirect("tipoContratacion?action=list");
     }
 
     private void deleteTipoContratacion(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         tipoContratacionDao.deleteTipoContratacion(id);
-        response.sendRedirect("tiposcontratacion?action=list");
+        response.sendRedirect("tipoContratacion?action=list");
     }
 
     @Override

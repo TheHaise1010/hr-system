@@ -11,12 +11,8 @@
     <h2 class="mb-4">Agregar Tipo de Contratación</h2>
     <form action="${pageContext.request.contextPath}/tipoContratacion?action=create" method="post">
         <div class="form-group">
-            <label for="nombreTipoContratacion">Nombre del Tipo de Contratación</label>
-            <input type="text" class="form-control" id="nombreTipoContratacion" name="nombreTipoContratacion" required>
-        </div>
-        <div class="form-group">
-            <label for="descripcionTipoContratacion">Descripción del Tipo de Contratación</label>
-            <textarea class="form-control" id="descripcionTipoContratacion" name="descripcionTipoContratacion" required></textarea>
+            <label for="tipoContratacion">Nombre del Tipo de Contratación</label>
+            <input type="text" class="form-control" id="tipoContratacion" name="tipoContratacion" required>
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>

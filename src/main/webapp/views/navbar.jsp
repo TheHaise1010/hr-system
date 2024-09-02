@@ -46,8 +46,8 @@
                     Tipos de Contratacion
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownTiposContratacion">
-                    <a class="dropdown-item" href="tiposcontratacion?action=list">Ver Tipos de Contratacion</a>
-                    <a class="dropdown-item" href="tiposcontratacion?action=showCreateForm">Crear Tipo de Contratacion</a>
+                    <a class="dropdown-item" href="tipoContratacion?action=list">Ver Tipos de Contratacion</a>
+                    <a class="dropdown-item" href="tipoContratacion?action=showCreateForm">Crear Tipo de Contratacion</a>
                 </div>
             </li>
         </ul>

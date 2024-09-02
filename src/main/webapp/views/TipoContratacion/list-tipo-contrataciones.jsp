@@ -21,8 +21,7 @@
                 <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Descripcion</th>
+                    <th>Tipo Contratacion</th>
                     <th>Acciones</th>
                 </tr>
                 </thead>
@@ -30,8 +29,7 @@
                 <c:forEach var="tipoContratacion" items="${tiposContratacion}">
                     <tr>
                         <td><c:out value="${tipoContratacion.idTipoContratacion}"/></td>
-                        <td><c:out value="${tipoContratacion.nombreTipoContratacion}"/></td>
-                        <td><c:out value="${tipoContratacion.descripcionTipoContratacion}"/></td>
+                        <td><c:out value="${tipoContratacion.tipoContratacion}"/></td>
                         <td class="d-flex justify-content-center">
                             <button class="btn btn-success mr-2">Editar</button>
                             <button class="btn btn-danger">Borrar</button>
