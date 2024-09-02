@@ -94,10 +94,10 @@ public class EmpleadoServlet extends HttpServlet {
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         Empleado existingEmpleado = empleadoDao.getEmpleadoById(id);
-        request.setAttribute("Empleado", existingEmpleado);
-        request.getRequestDispatcher("/views/edit-Empleado.jsp").forward(request, response);
+        request.setAttribute("empleado", existingEmpleado);
+        request.getRequestDispatcher("/views/Empleado/create-empleado.jsp").forward(request, response);
     }
 
 
@@ -120,12 +120,12 @@ public class EmpleadoServlet extends HttpServlet {
         empleado.setFechaNacimiento(fechaNacimiento);
 
         empleadoDao.updateEmpleado(empleado);
-        response.sendRedirect("empleados?action=list");
+        response.sendRedirect("empleado?action=list");
     }
     private void deleteEmpleado(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
+        String id = request.getParameter("id");
         empleadoDao.deleteEmpleado(id);
-        response.sendRedirect("Empleados?action=list");
+        response.sendRedirect("empleado?action=list");
     }
 
     @Override

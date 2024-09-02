@@ -57,12 +57,12 @@ public class EmpleadoDao {
         }
         return false;
     }
-    public Empleado getEmpleadoById(int id) throws SQLException {
+    public Empleado getEmpleadoById(String id) throws SQLException {
         Empleado empleado = null;
-        String query = "SELECT * FROM Empleados WHERE idEmpleado = ?";
+        String query = "SELECT * FROM Empleados WHERE numeroDui = ?";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, id);
+            statement.setString(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     empleado = new Empleado();
@@ -94,11 +94,11 @@ public class EmpleadoDao {
         }
     }
 
-    public void deleteEmpleado(int id) throws SQLException {
-        String query = "DELETE FROM Empleados WHERE idEmpleado = ?";
+    public void deleteEmpleado(String id) throws SQLException {
+        String query = "DELETE FROM Empleados WHERE numeroDui = ?";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, id);
+            statement.setString(1, id);
             statement.executeUpdate();
         }
     }
