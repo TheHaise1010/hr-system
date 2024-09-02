@@ -42,8 +42,8 @@
                             </c:otherwise>
                         </c:choose></td>
                         <td class="d-flex justify-content-center">
-                            <button class="btn btn-success mr-2">Editar</button>
-                            <button class="btn btn-danger">Borrar</button>
+                            <a href="${pageContext.request.contextPath}/cargo?action=edit&id=${cargo.idCargo}" class="btn btn-success mr-2">Editar</a>
+                            <a href="${pageContext.request.contextPath}/cargo?action=delete&id=${cargo.idCargo}" class="btn btn-danger">Borrar</a>
                         </td>
                     </tr>
                 </c:forEach>

@@ -9,22 +9,25 @@
 
 <div class="container mt-5">
     <h2 class="mb-4">Agregar Cargo</h2>
-    <form action="${pageContext.request.contextPath}/cargo?action=create" method="post">
+    <form action="${pageContext.request.contextPath}/cargo?action=${cargo != null ? 'update' : 'create'}" method="post">
+        <c:if test="${cargo != null}">
+            <input type="hidden" name="id" value="${cargo.idCargo}" />
+        </c:if>
         <div class="form-group">
             <label for="cargo">Cargo</label>
-            <input type="text" class="form-control" id="cargo" name="cargo" required>
+            <input type="text" class="form-control" id="cargo" name="cargo" value="${cargo != null ? cargo.cargo : ''}" required>
             <span id="cargoError" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label for="descripcionCargo">Descripcion del Cargo</label>
-            <textarea class="form-control" id="descripcionCargo" name="descripcionCargo" rows="3" required></textarea>
+            <label for="descripcionCargo">Descripción del Cargo</label>
+            <textarea class="form-control" id="descripcionCargo" name="descripcionCargo" rows="3" required>${cargo != null ? cargo.descripcionCargo : ''}</textarea>
             <span id="descripcionCargoError" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label for="jefatura">Jefatura</label>
             <select class="form-control" id="jefatura" name="jefatura">
-                <option value="true">Sí</option>
-                <option value="false">No</option>
+                <option value="true" ${cargo != null && cargo.jefatura ? 'selected' : ''}>Sí</option>
+                <option value="false" ${cargo != null && !cargo.jefatura ? 'selected' : ''}>No</option>
             </select>
             <span id="jefaturaError" class="text-danger"></span>
         </div>
