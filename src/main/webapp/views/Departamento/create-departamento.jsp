@@ -13,6 +13,7 @@
         <c:if test="${departamento != null}">
             <input type="hidden" name="id" value="${departamento.idDepartamento}" />
         </c:if>
+
         <div class="form-group">
             <label for="nombreDepartamento">Nombre del Departamento</label>
             <input type="text" class="form-control" id="nombreDepartamento" name="nombreDepartamento" value="${departamento != null ? departamento.nombreDepartamento : ''}" required maxlength="25">

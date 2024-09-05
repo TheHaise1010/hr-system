@@ -20,8 +20,13 @@
                 <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Descripcion</th>
+                    <th>Empleado</th>
+                    <th>Departamento</th>
+                    <th>Cargo</th>
+                    <th>Tipo contratacion</th>
+                    <th>Fecha contratacion</th>
+                    <th>Salario</th>
+                    <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
                 </thead>
@@ -29,11 +34,23 @@
                 <c:forEach var="contratacion" items="${contrataciones}">
                     <tr>
                         <td><c:out value="${contratacion.idContratacion}"/></td>
-                        <td><c:out value="${contratacion.nombreContratacion}"/></td>
-                        <td><c:out value="${contratacion.descripcionContratacion}"/></td>
+                        <td><c:out value="${contratacion.idEmpleado}"/></td>
+                        <td><c:out value="${contratacion.idDepartamento}"/></td>
+                        <td><c:out value="${contratacion.idCargo}"/></td>
+                        <td><c:out value="${contratacion.idTipoContratacion}"/></td>
+                        <td><c:out value="${contratacion.fechaContratacion}"/></td>
+                        <td><c:out value="${contratacion.salario}"/></td>
+                        <td> <c:choose>
+                            <c:when test="${contratacion.estado}">
+                                Activo
+                            </c:when>
+                            <c:otherwise>
+                                Inactivo
+                            </c:otherwise>
+                        </c:choose></td>
                         <td class="d-flex justify-content-center">
-                            <a href="${pageContext.request.contextPath}/contratacion?action=edit&id=${contratacion.idContratacion}" class="btn btn-success mr-2">Editar</a>
-                            <a href="${pageContext.request.contextPath}/contratacion?action=delete&id=${contratacion.idContratacion}" class="btn btn-danger">Borrar</a>
+                            <a href="${pageContext.request.contextPath}/contrataciones?action=edit&id=${contratacion.idContratacion}" class="btn btn-success mr-2">Editar</a>
+                            <a href="${pageContext.request.contextPath}/contrataciones?action=delete&id=${contratacion.idContratacion}" class="btn btn-danger">Borrar</a>
                         </td>
                     </tr>
                 </c:forEach>

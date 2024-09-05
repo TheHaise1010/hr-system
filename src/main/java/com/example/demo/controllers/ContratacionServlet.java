@@ -1,8 +1,9 @@
 package com.example.demo.controllers;
 
-import com.example.demo.daos.ContratacionDao;
-import com.example.demo.models.Contratacion;
+import com.example.demo.daos.*;
+import com.example.demo.models.*;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,10 +16,18 @@ import java.util.List;
 @WebServlet("/contrataciones")
 public class ContratacionServlet extends HttpServlet {
     private ContratacionDao contratacionDao;
+    private EmpleadoDao empleadoDao;
+    private DepartamentoDao departamentoDao;
+    private CargoDao cargoDao;
+    private TipoContratacionDao tipoContratacionDao;
 
     @Override
     public void init() {
         contratacionDao = new ContratacionDao();
+        empleadoDao = new EmpleadoDao();
+        departamentoDao = new DepartamentoDao();
+        cargoDao = new CargoDao();
+        tipoContratacionDao = new TipoContratacionDao();
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -64,11 +73,20 @@ public class ContratacionServlet extends HttpServlet {
 
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
+            List<Empleado> empleados = empleadoDao.getAllEmpleados();
+            List<Departamento> departamentos = departamentoDao.getAllDepartamentos();
+            List<Cargo> cargos = cargoDao.getAllCargos();
+            List<TipoContratacion> tiposContratacion = tipoContratacionDao.getAllTiposContratacion();
+            request.setAttribute("empleados", empleados);
+            request.setAttribute("departamentos", departamentos);
+            request.setAttribute("cargos", cargos);
+            request.setAttribute("tiposContratacion", tiposContratacion);
             request.getRequestDispatcher("/views/Contratacion/create-contratacion.jsp").forward(request, response);
         } catch (Exception e) {
             throw new IOException(e);
         }
     }
+
 
 
     private void createContratacion(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
@@ -93,16 +111,30 @@ public class ContratacionServlet extends HttpServlet {
         response.sendRedirect("contrataciones?action=list");
     }
 
-    private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        Contratacion existingContratacion = contratacionDao.getContratacionById(id);
-        request.setAttribute("contratacion", existingContratacion);
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
         try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            Contratacion existingContratacion = contratacionDao.getContratacionById(id);
+
+            List<Empleado> empleados = empleadoDao.getAllEmpleados();
+            List<Departamento> departamentos = departamentoDao.getAllDepartamentos();
+            List<Cargo> cargos = cargoDao.getAllCargos();
+            List<TipoContratacion> tiposContratacion = tipoContratacionDao.getAllTiposContratacion();
+
+            request.setAttribute("empleados", empleados);
+            request.setAttribute("departamentos", departamentos);
+            request.setAttribute("cargos", cargos);
+            request.setAttribute("tiposContratacion", tiposContratacion);
+            request.setAttribute("contratacion", existingContratacion);
+
             request.getRequestDispatcher("/views/Contratacion/create-contratacion.jsp").forward(request, response);
-        } catch (Exception e) {
-            throw new IOException(e);
+        } catch (SQLException | IOException | ServletException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
+
+
 
     private void updateContratacion(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
