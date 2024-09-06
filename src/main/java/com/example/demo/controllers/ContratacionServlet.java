@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/contrataciones")
@@ -63,7 +65,40 @@ public class ContratacionServlet extends HttpServlet {
 
     private void listContrataciones(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         List<Contratacion> contrataciones = contratacionDao.getAllContrataciones();
+
+        //Getting the info from the rest of the objects
+        List<String> departamentos = new ArrayList<>();
+        Departamento departamento = new Departamento();
+
+        List<String> empleados = new ArrayList<>();
+        Empleado empleado = new Empleado();
+
+        List<String> cargos = new ArrayList<>();
+        Cargo cargo = new Cargo();
+
+        List<String> tiposContratacion = new ArrayList<>();
+        TipoContratacion tipoContratacion = new TipoContratacion();
+
+        for(Contratacion contratacion : contrataciones){
+            departamento = departamentoDao.getDepartamentoById(contratacion.getIdDepartamento());
+            departamentos.add(departamento.getNombreDepartamento());
+
+            empleado = empleadoDao.getEmpleadoById(contratacion.getIdEmpleado());
+            empleados.add(empleado.getNombrePersona());
+
+            cargo = cargoDao.getCargoById(contratacion.getIdCargo());
+            cargos.add(cargo.getCargo());
+
+            tipoContratacion = tipoContratacionDao.getTipoContratacionById(contratacion.getIdTipoContratacion());
+            tiposContratacion.add(tipoContratacion.getTipoContratacion());
+        }
+
+        request.setAttribute("departamentos", departamentos);
+        request.setAttribute("empleados",empleados);
+        request.setAttribute("cargos",cargos);
         request.setAttribute("contrataciones", contrataciones);
+        request.setAttribute("tiposContratacion", tiposContratacion);
+
         try {
             request.getRequestDispatcher("/views/Contratacion/list-contrataciones.jsp").forward(request, response);
         } catch (Exception e) {
@@ -91,7 +126,7 @@ public class ContratacionServlet extends HttpServlet {
 
     private void createContratacion(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         int idDepartamento = Integer.parseInt(request.getParameter("idDepartamento"));
-        int idEmpleado = Integer.parseInt(request.getParameter("idEmpleado"));
+        int idEmpleado =  Integer.parseInt(request.getParameter("idEmpleado"));
         int idCargo = Integer.parseInt(request.getParameter("idCargo"));
         int idTipoContratacion = Integer.parseInt(request.getParameter("idTipoContratacion"));
         Date fechaContratacion = Date.valueOf(request.getParameter("fechaContratacion"));

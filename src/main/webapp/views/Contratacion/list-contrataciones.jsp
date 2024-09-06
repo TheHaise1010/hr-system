@@ -31,13 +31,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="contratacion" items="${contrataciones}">
+                <c:forEach var="contratacion" items="${contrataciones}" varStatus="status">
                     <tr>
                         <td><c:out value="${contratacion.idContratacion}"/></td>
-                        <td><c:out value="${contratacion.idEmpleado}"/></td>
-                        <td><c:out value="${contratacion.idDepartamento}"/></td>
-                        <td><c:out value="${contratacion.idCargo}"/></td>
-                        <td><c:out value="${contratacion.idTipoContratacion}"/></td>
+                        <td><c:out value="${empleados[status.index]}"/></td>
+                        <td><c:out value="${departamentos[status.index]}"/></td>
+                        <td><c:out value="${cargos[status.index]}"/></td>
+                        <td><c:out value="${tiposContratacion[status.index]}"/></td>
                         <td><c:out value="${contratacion.fechaContratacion}"/></td>
                         <td><c:out value="${contratacion.salario}"/></td>
                         <td> <c:choose>

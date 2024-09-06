@@ -57,12 +57,12 @@ public class EmpleadoDao {
         }
         return false;
     }
-    public Empleado getEmpleadoById(String id) throws SQLException {
+    public Empleado getEmpleadoById(int id) throws SQLException {
         Empleado empleado = null;
-        String query = "SELECT * FROM Empleados WHERE numeroDui = ?";
+        String query = "SELECT * FROM Empleados WHERE idEmpleado = ?";
         try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, id);
+            statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
                     empleado = new Empleado();

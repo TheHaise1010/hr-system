@@ -94,7 +94,7 @@ public class EmpleadoServlet extends HttpServlet {
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
-        String id = request.getParameter("id");
+        int id = Integer.parseInt(request.getParameter("id"));
         Empleado existingEmpleado = empleadoDao.getEmpleadoById(id);
         request.setAttribute("empleado", existingEmpleado);
         request.getRequestDispatcher("/views/Empleado/create-empleado.jsp").forward(request, response);
