@@ -56,12 +56,12 @@ public class EmpleadoServlet extends HttpServlet {
     private void listEmpleados(HttpServletRequest request, HttpServletResponse response) throws SQLException, ServletException, IOException {
         List<Empleado> empleados = empleadoDao.getAllEmpleados();
         request.setAttribute("empleados", empleados);
-        request.getRequestDispatcher("/views/Empleado/list-empleados.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/empleado/list-empleados.jsp").forward(request, response);
     }
 
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            request.getRequestDispatcher("/views/Empleado/create-empleado.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/empleado/create-empleado.jsp").forward(request, response);
         } catch (Exception e) {
             throw new IOException(e);
         }
@@ -97,7 +97,7 @@ public class EmpleadoServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         Empleado existingEmpleado = empleadoDao.getEmpleadoById(id);
         request.setAttribute("empleado", existingEmpleado);
-        request.getRequestDispatcher("/views/Empleado/create-empleado.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/empleado/create-empleado.jsp").forward(request, response);
     }
 
 

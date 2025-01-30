@@ -37,7 +37,7 @@
                         <td><c:out value="${empleado.correoInstitucional}"/></td>
                         <td><c:out value="${empleado.fechaNacimiento}"/></td>
                         <td class="d-flex justify-content-center">
-                            <a href="${pageContext.request.contextPath}/empleado?action=edit&id=${empleado.numeroDui}" class="btn btn-success mr-2">Editar</a>
+                            <a href="${pageContext.request.contextPath}/empleado?action=edit&id=${empleado.idEmpleado}" class="btn btn-success mr-2">Editar</a>
                             <a href="${pageContext.request.contextPath}/empleado?action=delete&id=${empleado.numeroDui}" class="btn btn-danger">Borrar</a>
                         </td>
                     </tr>

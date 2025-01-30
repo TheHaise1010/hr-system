@@ -10,8 +10,8 @@
                     Empleados
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownEmpleados">
-                    <a class="dropdown-item" href="empleado?action=list">Ver Empleados</a>
-                    <a class="dropdown-item" href="empleado?action=showCreateForm">Crear Empleado</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/empleado?action=list">Ver Empleados</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/empleado?action=showCreateForm">Crear Empleado</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -19,8 +19,8 @@
                     Departamentos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownDepartamentos">
-                    <a class="dropdown-item" href="departamento?action=list">Ver Departamentos</a>
-                    <a class="dropdown-item" href="departamento?action=showCreateForm">Crear Departamento</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/departamento?action=list">Ver Departamentos</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/departamento?action=showCreateForm">Crear Departamento</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -28,8 +28,8 @@
                     Contrataciones
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownContrataciones">
-                    <a class="dropdown-item" href="contrataciones?action=list">Ver Contrataciones</a>
-                    <a class="dropdown-item" href="contrataciones?action=showCreateForm">Crear Contratacion</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/contrataciones?action=list">Ver Contrataciones</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/contrataciones?action=showCreateForm">Crear Contratacion</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -37,8 +37,8 @@
                     Cargos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownCargos">
-                    <a class="dropdown-item" href="cargo?action=list">Ver Cargos</a>
-                    <a class="dropdown-item" href="cargo?action=showCreateForm">Crear Cargo</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/cargo?action=list">Ver Cargos</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/cargo?action=showCreateForm">Crear Cargo</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -46,8 +46,8 @@
                     Tipos de Contratacion
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownTiposContratacion">
-                    <a class="dropdown-item" href="tipoContratacion?action=list">Ver Tipos de Contratacion</a>
-                    <a class="dropdown-item" href="tipoContratacion?action=showCreateForm">Crear Tipo de Contratacion</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/tipoContratacion?action=list">Ver Tipos de Contratacion</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/tipoContratacion?action=showCreateForm">Crear Tipo de Contratacion</a>
                 </div>
             </li>
         </ul>
